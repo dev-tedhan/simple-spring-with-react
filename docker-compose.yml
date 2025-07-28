@@ -1,1 +1,18 @@
-# Test
+version: '3.8'
+
+services:
+  simple-spring:
+    build:
+      context: ./simple-spring
+    container_name: simple-spring
+    ports:
+      - "10000"
+    restart: always
+
+  simple-react:
+    build:
+      context: ./simple-react
+    container_name: simple-react
+    ports:
+      - "80:3000"
+    restart: always
