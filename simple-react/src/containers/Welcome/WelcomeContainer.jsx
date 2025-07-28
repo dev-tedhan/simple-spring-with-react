@@ -13,7 +13,7 @@ function WelcomeContainer() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://simple-spring:10000/api/members/name");
+      const response = await fetch("/api/members/name");
       const name = await response.text();
       setUserName(name);
     };
