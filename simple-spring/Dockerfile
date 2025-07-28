@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk AS build
 WORKDIR /simple/simple-spring
 
 # Gradle wrapper 및 프로젝트 파일 복사
-COPY /simple/simple-spring/ ./
+COPY . .
 
 # Gradle 빌드 실행 (build/libs/*.jar 생성됨)
 RUN chmod +x ./gradlew && ./gradlew clean build -x test --no-daemon
