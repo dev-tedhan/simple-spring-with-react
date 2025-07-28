@@ -33,12 +33,12 @@ jobs:
     - name: Copy project to EC2
       run: |
         rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@$HOST:/home/ubuntu/simple
-    - name: Install Docker Compose
+        
+    - name: Install Docker Compose via apt on EC2
       run: |
-        sudo mkdir -p /usr/local/lib/docker/cli-plugins
-        sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
-        -o /usr/local/lib/docker/cli-plugins/docker-compose
-        sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@$HOST << 'EOF'
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
     - name: Build & Run with Docker Compose
       run: |
