@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 모든 경로에 대해
 //                .allowedOrigins("http://localhost:3000") // React 개발 서버 주소 or 배포 주소
-                .allowedOrigins("*")
+                .allowedOrigins("http://localhost:80")
 //                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedMethods("*")
                 .allowedHeaders("*")
